@@ -1,0 +1,148 @@
+.countdown-section {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E0F4FF 0%, #F0E5FF 100%);
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-container {
+  max-width: 1200px;
+  width: 100%;
+  background: white;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.countdown-event {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.countdown-event h3 {
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.event-date {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.time-value {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFE5EC 0%, #FFF5F7 100%);
+  min-width: 100px;
+  box-shadow: 0 2px 10px rgba(255, 179, 193, 0.15);
+}
+
+.time-label {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.countdown-divider {
+  text-align: center;
+  margin: 3rem 0;
+  position: relative;
+}
+
+.countdown-divider::before,
+.countdown-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.countdown-divider::before {
+  left: 0;
+}
+
+.countdown-divider::after {
+  right: 0;
+}
+
+.divider-heart {
+  font-size: 2.5rem;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .countdown-event h3 {
+    font-size: 1.8rem;
+  }
+
+  .event-date {
+    font-size: 1rem;
+  }
+
+  .countdown-display {
+    gap: 1rem;
+  }
+
+  .time-unit {
+    min-width: 80px;
+  }
+
+  .time-value {
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    min-width: 70px;
+  }
+
+  .time-label {
+    font-size: 0.9rem;
+  }
+
+  .countdown-container {
+    padding: 2rem 1rem;
+  }
+}

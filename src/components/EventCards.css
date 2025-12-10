@@ -1,0 +1,272 @@
+.events-section {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #F0E5FF 0%, #FFE5EC 100%);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.events-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+  margin-bottom: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.event-card {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.event-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  opacity: 0.9;
+}
+
+.event-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 500;
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.event-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.event-detail:last-of-type {
+  border-bottom: none;
+}
+
+.detail-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.detail-content {
+  flex: 1;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  opacity: 0.6;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.venue-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.detail-address {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.event-description {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin: 2rem 0;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.map-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--secondary-color);
+  color: white;
+  padding: 0.9rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.map-button:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(168, 218, 220, 0.3);
+}
+
+.button-icon {
+  font-size: 1.3rem;
+}
+
+.card-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decoration-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 179, 193, 0.1);
+}
+
+.circle-1 {
+  width: 150px;
+  height: 150px;
+  top: -50px;
+  right: -50px;
+}
+
+.circle-2 {
+  width: 100px;
+  height: 100px;
+  top: 20px;
+  right: 30px;
+}
+
+.circle-3 {
+  width: 60px;
+  height: 60px;
+  top: 80px;
+  right: -20px;
+}
+
+.additional-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+}
+
+.info-card h4 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .event-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .event-title {
+    font-size: 2rem;
+  }
+
+  .event-icon {
+    font-size: 3rem;
+  }
+
+  .detail-value {
+    font-size: 1rem;
+  }
+
+  .venue-name {
+    font-size: 1.1rem;
+  }
+
+  .additional-info {
+    grid-template-columns: 1fr;
+  }
+}

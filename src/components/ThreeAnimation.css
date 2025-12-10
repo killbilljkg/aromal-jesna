@@ -1,0 +1,186 @@
+.three-animation-container {
+  position: relative;
+  min-height: 150vh;
+  background: linear-gradient(180deg, #FFE5EC 0%, #E0F4FF 100%);
+  overflow: hidden;
+}
+
+.canvas-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.name-label {
+  position: absolute;
+  top: 15%;
+  color: var(--primary-color);
+  text-shadow: none;
+  z-index: 10;
+}
+
+.name-label h3 {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.left-label {
+  left: 10%;
+}
+
+.right-label {
+  right: 10%;
+}
+
+.heart-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.frame-border {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  border: 3px solid var(--primary-color);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(255, 179, 193, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.frame-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--primary-color);
+}
+
+.frame-corner.top-left {
+  top: -8px;
+  left: -8px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 8px 0 0 0;
+}
+
+.frame-corner.top-right {
+  top: -8px;
+  right: -8px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 8px 0 0;
+}
+
+.frame-corner.bottom-left {
+  bottom: -8px;
+  left: -8px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 8px;
+}
+
+.frame-corner.bottom-right {
+  bottom: -8px;
+  right: -8px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 8px 0;
+}
+
+.heart-icon {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.together-text {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--text-dark);
+  z-index: 10;
+}
+
+.together-text h2 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  text-shadow: none;
+  font-weight: 500;
+}
+
+.together-text p {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0.4;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .name-label h3 {
+    font-size: 2rem;
+  }
+
+  .frame-border {
+    width: 280px;
+    height: 350px;
+  }
+
+  .together-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .together-text p {
+    font-size: 1rem;
+  }
+
+  .left-label {
+    left: 5%;
+  }
+
+  .right-label {
+    right: 5%;
+  }
+}

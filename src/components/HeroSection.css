@@ -1,0 +1,159 @@
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #FFF5F7 0%, #FFE5EC 100%);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: var(--text-dark);
+  max-width: 900px;
+}
+
+.guest-name {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.event-icon-hero {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.couple-names {
+  font-size: 4.5rem;
+  margin: 1rem 0;
+  color: var(--primary-color);
+  text-shadow: none;
+  line-height: 1.2;
+}
+
+.ampersand {
+  display: inline-block;
+  margin: 0 1rem;
+  font-size: 3.5rem;
+  color: var(--secondary-color);
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  color: var(--text-dark);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.invitation-text {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.scroll-indicator {
+  margin-top: 4rem;
+}
+
+.scroll-indicator p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+  opacity: 0.6;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.heart {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.15;
+  animation: floatUp 15s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .couple-names {
+    font-size: 2.5rem;
+  }
+
+  .ampersand {
+    font-size: 2rem;
+  }
+
+  .invitation-text {
+    font-size: 1.5rem;
+  }
+
+  .guest-name {
+    font-size: 1.2rem;
+  }
+}

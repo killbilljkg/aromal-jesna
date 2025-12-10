@@ -1,0 +1,42 @@
+{
+  "couple": {
+    "groom": {
+      "name": "Aromal",
+      "fullName": "Aromal Kumar",
+      "image": "/images/aromal.png"
+    },
+    "bride": {
+      "name": "Jesna",
+      "fullName": "Jesna Mary",
+      "image": "/images/jesna.png"
+    }
+  },
+  "events": {
+    "engagement": {
+      "title": "Engagement Ceremony",
+      "date": "2025-12-25",
+      "time": "10:00 AM",
+      "venue": {
+        "name": "Green Valley Gardens",
+        "address": "123 Garden Street, Kochi, Kerala",
+        "mapLink": "https://maps.google.com"
+      },
+      "description": "Join us as we celebrate our engagement and the beginning of our journey together"
+    },
+    "wedding": {
+      "title": "Wedding Ceremony",
+      "date": "2026-01-15",
+      "time": "11:00 AM",
+      "venue": {
+        "name": "St. Mary's Church",
+        "address": "456 Church Road, Kochi, Kerala",
+        "mapLink": "https://maps.google.com"
+      },
+      "description": "We joyfully invite you to witness and celebrate our wedding"
+    }
+  },
+  "rsvp": {
+    "email": "rsvp@aromaljesna.com",
+    "phone": "+91 1234567890"
+  }
+}

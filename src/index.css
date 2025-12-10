@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #FFF5F7;
+  overflow-x: hidden;
+}
+
+:root {
+  --primary-color: #FFB3C1;
+  --secondary-color: #A8DADC;
+  --text-dark: #5A5A5A;
+  --text-light: #F8F8F8;
+  --bg-light: #FFFFFF;
+  --accent-pink: #FFC8DD;
+  --accent-peach: #FFCDB2;
+  --accent-lavender: #CDB4DB;
+  --accent-mint: #B8F2E6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+}
+
+.fancy-text {
+  font-family: 'Great Vibes', cursive;
+}
