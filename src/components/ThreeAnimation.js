@@ -17,8 +17,11 @@ const ImagePlane = ({ imageUrl, position, targetPosition, scrollProgress }) => {
       meshRef.current.position.y =
         position[1] + (targetPosition[1] - position[1]) * scrollProgress;
 
-      // Add rotation effect
-      meshRef.current.rotation.y = (1 - scrollProgress) * 0.5;
+      // Add rotation effect - when joined, tilt toward each other
+      const baseRotation = (1 - scrollProgress) * 0.5;
+      const tiltDirection = position[0] < 0 ? 1 : -1; // Left tilts right, right tilts left
+      const tiltAmount = scrollProgress > 0.7 ? (scrollProgress - 0.7) * 0.3 * tiltDirection : 0;
+      meshRef.current.rotation.y = baseRotation + tiltAmount;
 
       // Add floating animation
       meshRef.current.position.y += Math.sin(Date.now() * 0.001) * 0.01;
@@ -28,7 +31,7 @@ const ImagePlane = ({ imageUrl, position, targetPosition, scrollProgress }) => {
   return (
     <mesh ref={meshRef} position={position}>
       <planeGeometry args={[2, 2.5]} />
-      <meshStandardMaterial map={texture} transparent={true} />
+      <meshBasicMaterial map={texture} transparent={true} />
     </mesh>
   );
 };
@@ -97,9 +100,8 @@ const ThreeAnimation = ({ groomImage, brideImage, groomName, brideName }) => {
     <div ref={containerRef} className="three-animation-container">
       <div className="canvas-wrapper">
         <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} />
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[0, 0, 5]} intensity={2} />
 
           <ImagePlane
             imageUrl={groomImage}
@@ -143,25 +145,87 @@ const ThreeAnimation = ({ groomImage, brideImage, groomName, brideName }) => {
           <h3 className="fancy-text">{brideName}</h3>
         </motion.div>
 
-        {/* Heart frame effect when images meet */}
-        <motion.div
-          className="heart-frame"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{
-            opacity: isJoined ? 1 : 0,
-            scale: isJoined ? 1 : 0,
-            rotate: isJoined ? 360 : 0
-          }}
-          transition={{ duration: 1, type: "spring" }}
-        >
-          <div className="frame-border">
-            <div className="frame-corner top-left"></div>
-            <div className="frame-corner top-right"></div>
-            <div className="frame-corner bottom-left"></div>
-            <div className="frame-corner bottom-right"></div>
-            <div className="heart-icon">❤️</div>
-          </div>
-        </motion.div>
+        {/* Unity effect when images meet */}
+        {isJoined && (
+          <>
+            {/* Light beam connecting the images */}
+            <motion.div
+              className="unity-light-beam"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 0.6, scaleX: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            />
+
+            {/* Joining rings animation */}
+            <motion.div
+              className="unity-rings-container"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              <motion.div
+                className="unity-ring unity-ring-left"
+                initial={{ x: -100, y: 100, rotate: -45 }}
+                animate={{ x: -15, y: 0, rotate: 0 }}
+                transition={{ delay: 0.6, duration: 1, type: "spring" }}
+              >
+                💍
+              </motion.div>
+              <motion.div
+                className="unity-ring unity-ring-right"
+                initial={{ x: 100, y: 100, rotate: 45 }}
+                animate={{ x: 15, y: 0, rotate: 0 }}
+                transition={{ delay: 0.6, duration: 1, type: "spring" }}
+              >
+                💍
+              </motion.div>
+
+              {/* Interlocking circles symbol */}
+              <motion.svg
+                className="unity-circles"
+                width="100"
+                height="60"
+                viewBox="0 0 100 60"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.5, duration: 0.8, type: "spring" }}
+              >
+                <circle
+                  cx="35"
+                  cy="30"
+                  r="20"
+                  fill="none"
+                  stroke="var(--primary-color)"
+                  strokeWidth="3"
+                  opacity="0.7"
+                />
+                <circle
+                  cx="65"
+                  cy="30"
+                  r="20"
+                  fill="none"
+                  stroke="var(--secondary-color)"
+                  strokeWidth="3"
+                  opacity="0.7"
+                />
+              </motion.svg>
+            </motion.div>
+
+            {/* Aura effect around images */}
+            <motion.div
+              className="unity-aura unity-aura-left"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.4, scale: 1.2 }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
+            />
+            <motion.div
+              className="unity-aura unity-aura-right"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.4, scale: 1.2 }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", delay: 0.75 }}
+            />
+          </>
+        )}
 
         {/* Together text */}
         <motion.div
@@ -171,40 +235,48 @@ const ThreeAnimation = ({ groomImage, brideImage, groomName, brideName }) => {
             opacity: isJoined ? 1 : 0,
             y: isJoined ? 0 : 50
           }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 1.8 }}
         >
-          <h2 className="fancy-text">Together Forever</h2>
-          <p>Two souls, one heart</p>
+          <h2 className="fancy-text">Together as One</h2>
+          <p>Two souls united in eternal love</p>
+          <p className="together-subtitle">A bond that transcends time</p>
         </motion.div>
 
-        {/* Sparkle effects */}
+        {/* Sparkle effects emanating from center */}
         {isJoined && (
           <div className="sparkles">
-            {[...Array(30)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="sparkle"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0, 1, 0],
-                  x: (Math.random() - 0.5) * 400,
-                  y: (Math.random() - 0.5) * 400
-                }}
-                transition={{
-                  duration: 2,
-                  delay: Math.random() * 0.5,
-                  repeat: Infinity,
-                  repeatDelay: Math.random() * 2
-                }}
-                style={{
-                  left: '50%',
-                  top: '50%'
-                }}
-              >
-                ✨
-              </motion.div>
-            ))}
+            {[...Array(20)].map((_, i) => {
+              const angle = (Math.PI * 2 * i) / 20;
+              const distance = 150 + Math.random() * 100;
+              const xPos = Math.cos(angle) * distance;
+              const yPos = Math.sin(angle) * distance;
+
+              return (
+                <motion.div
+                  key={i}
+                  className="sparkle"
+                  initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                  animate={{
+                    opacity: [0, 0.8, 0],
+                    scale: [0, 1.5, 0],
+                    x: xPos,
+                    y: yPos
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    delay: 1.5 + (i * 0.05),
+                    repeat: Infinity,
+                    repeatDelay: 2
+                  }}
+                  style={{
+                    left: '50%',
+                    top: '50%'
+                  }}
+                >
+                  ✨
+                </motion.div>
+              );
+            })}
           </div>
         )}
       </div>
