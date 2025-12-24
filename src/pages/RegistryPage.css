@@ -1,0 +1,168 @@
+.registry-section {
+  padding: 8rem 2rem;
+  background: var(--bg-white);
+  min-height: calc(100vh - 80px);
+}
+
+.registry-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.registry-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.registry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.registry-card {
+  background: var(--bg-white);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registry-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.registry-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.registry-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.registry-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-medium);
+  margin-bottom: 2rem;
+}
+
+.registry-button {
+  display: inline-block;
+  background: var(--text-dark);
+  color: white;
+  padding: 0.875rem 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.registry-button:hover {
+  background: var(--text-medium);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.registry-note {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bg-cream);
+  border-radius: 4px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.registry-note h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.registry-note p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .registry-section {
+    padding: 6rem 2rem;
+  }
+
+  .registry-header {
+    margin-bottom: 4rem;
+  }
+
+  .registry-grid {
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .registry-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .registry-header {
+    margin-bottom: 3rem;
+  }
+
+  .registry-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .registry-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .registry-icon {
+    font-size: 3rem;
+  }
+
+  .registry-name {
+    font-size: 1.75rem;
+  }
+
+  .registry-note {
+    padding: 2rem;
+  }
+
+  .registry-note h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .registry-section {
+    padding: 4rem 1rem;
+  }
+
+  .registry-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .registry-note {
+    padding: 1.5rem;
+  }
+}

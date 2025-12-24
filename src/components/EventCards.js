@@ -79,6 +79,13 @@ const EventCards = ({ events, eventType = 'both' }) => {
     </motion.div>
   );
 
+  // Create timeline items
+  const timelineEvents = [
+    { time: '4:00 PM', title: 'CEREMONY', icon: '⏰' },
+    { time: '5:30 PM', title: 'COCKTAIL HOUR', icon: '⏰' },
+    { time: '7:00 PM', title: 'DINNER & DANCING', icon: '⏰' }
+  ];
+
   return (
     <section className="events-section">
       <motion.div
@@ -89,52 +96,33 @@ const EventCards = ({ events, eventType = 'both' }) => {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="section-title fancy-text"
+          className="section-title"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Celebration Details
+          Schedule of Events
         </motion.h2>
 
-        <motion.p
-          className="section-subtitle"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {eventType === 'both'
-            ? 'We would be honored to have you join us for these special moments'
-            : 'We would be honored to have you join us for this special moment'}
-        </motion.p>
-
-        <div className="events-grid">
-          {events.engagement && <EventCard event={events.engagement} icon="💍" index={0} />}
-          {events.wedding && <EventCard event={events.wedding} icon="💒" index={events.engagement ? 1 : 0} />}
+        <div className="timeline">
+          {timelineEvents.map((item, index) => (
+            <motion.div
+              key={index}
+              className="timeline-item"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="timeline-icon">{item.icon}</div>
+              <div className="timeline-content">
+                <h3 className="timeline-time">{item.time}</h3>
+                <p className="timeline-title">{item.title}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
-
-        <motion.div
-          className="additional-info"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="info-card">
-            <h4>Dress Code</h4>
-            <p>Formal Attire</p>
-          </div>
-          <div className="info-card">
-            <h4>Reception</h4>
-            <p>To follow ceremony</p>
-          </div>
-          <div className="info-card">
-            <h4>Parking</h4>
-            <p>Available on site</p>
-          </div>
-        </motion.div>
       </motion.div>
     </section>
   );

@@ -8,27 +8,102 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #FFF5F7;
+  background: #FFFFFF;
+  color: #2C2C2C;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 :root {
-  --primary-color: #FFB3C1;
-  --secondary-color: #A8DADC;
-  --text-dark: #5A5A5A;
-  --text-light: #F8F8F8;
-  --bg-light: #FFFFFF;
-  --accent-pink: #FFC8DD;
-  --accent-peach: #FFCDB2;
-  --accent-lavender: #CDB4DB;
-  --accent-mint: #B8F2E6;
+  /* Clean, minimalist color palette */
+  --bg-white: #FFFFFF;
+  --bg-cream: #FAF9F7;
+  --bg-light-gray: #F5F5F5;
+
+  /* Text colors */
+  --text-dark: #2C2C2C;
+  --text-medium: #666666;
+  --text-light: #999999;
+
+  /* Accent colors */
+  --accent-color: #2C2C2C;
+  --link-color: #2C2C2C;
+  --link-hover: #666666;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
 }
 
-.fancy-text {
-  font-family: 'Great Vibes', cursive;
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-medium);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dark);
+}
+
+/* Selection color */
+::selection {
+  background: var(--text-dark);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--text-dark);
+  color: white;
 }

@@ -1,159 +1,150 @@
 .hero-section {
-  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #FFF5F7 0%, #FFE5EC 100%);
-  overflow: hidden;
-  padding: 2rem;
-}
-
-.hero-content {
+  padding: 8rem 2rem 4rem;
   position: relative;
-  z-index: 10;
-  text-align: center;
-  color: var(--text-dark);
-  max-width: 900px;
+  overflow: hidden;
 }
 
-.guest-name {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: var(--text-dark);
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-.event-icon-hero {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
-
-.couple-names {
-  font-size: 4.5rem;
-  margin: 1rem 0;
-  color: var(--primary-color);
-  text-shadow: none;
-  line-height: 1.2;
-}
-
-.ampersand {
-  display: inline-block;
-  margin: 0 1rem;
-  font-size: 3.5rem;
-  color: var(--secondary-color);
-}
-
-.tagline {
-  font-size: 1.1rem;
-  margin: 1rem 0;
-  color: var(--text-dark);
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.invitation-text {
-  font-size: 1.8rem;
-  margin-top: 2rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--text-dark);
-}
-
-.scroll-indicator {
-  margin-top: 4rem;
-}
-
-.scroll-indicator p {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-dark);
-  opacity: 0.6;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.scroll-arrow {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.hero-background {
-  position: absolute;
+.hero-section::before {
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
+  height: 100vh;
+  background-image: var(--hero-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
 }
 
-.floating-hearts {
-  position: absolute;
+.hero-section::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
-.heart {
-  position: absolute;
-  font-size: 1.2rem;
-  opacity: 0.15;
-  animation: floatUp 15s infinite ease-in-out;
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.15;
-  }
-  90% {
-    opacity: 0.15;
-  }
-  100% {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+.hero-names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  color: white;
+  line-height: 1.1;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ampersand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-style: italic;
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.hero-date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: white;
+  margin-top: 1rem;
+}
+
+.hero-venue {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 6rem 2rem 3rem;
   }
-  50% {
-    transform: translateY(10px);
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-date {
+    font-size: 1.15rem;
   }
 }
 
 @media (max-width: 768px) {
-  .couple-names {
-    font-size: 2.5rem;
+  .hero-section {
+    padding: 5rem 1.5rem 2rem;
+    min-height: 90vh;
   }
 
-  .ampersand {
-    font-size: 2rem;
+  .hero-content {
+    gap: 1.5rem;
   }
 
-  .invitation-text {
-    font-size: 1.5rem;
+  .hero-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
   }
 
-  .guest-name {
-    font-size: 1.2rem;
+  .hero-date {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-venue {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-date {
+    font-size: 1rem;
+  }
+
+  .hero-venue {
+    font-size: 0.9rem;
   }
 }

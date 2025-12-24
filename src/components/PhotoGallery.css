@@ -1,0 +1,366 @@
+/* Photo Collage Section */
+.photo-collage-section {
+  padding: 8rem 2rem;
+  background: linear-gradient(to bottom, var(--bg-primary), var(--bg-tertiary));
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-collage-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(212, 165, 165, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(201, 167, 109, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.collage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 80px);
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.collage-item {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modern polaroid-style frames */
+.photo-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary);
+  padding: 1.25rem;
+  padding-bottom: 3.5rem;
+  border-radius: 2px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.collage-item:hover .photo-frame {
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 5px 15px rgba(201, 167, 109, 0.15);
+  transform: translateY(-5px);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 1rem;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+/* Grid positioning for scattered polaroid effect */
+.item-1 {
+  grid-column: 1 / 6;
+  grid-row: 2 / 6;
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+
+.item-2 {
+  grid-column: 4 / 8;
+  grid-row: 4 / 8;
+  transform: rotate(2deg);
+  z-index: 3;
+}
+
+.item-3 {
+  grid-column: 7 / 12;
+  grid-row: 1 / 5;
+  transform: rotate(4deg);
+  z-index: 4;
+}
+
+.item-4 {
+  grid-column: 9 / 13;
+  grid-row: 4 / 8;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+
+/* Our Love Story Section */
+.celebrate-section {
+  padding: 8rem 2rem;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.celebrate-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+  opacity: 0.4;
+}
+
+.celebrate-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.celebrate-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.celebrate-subtitle {
+  text-align: center;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--text-medium);
+  max-width: 700px;
+  margin: 0 auto 5rem;
+  line-height: 1.9;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Horizontal Gallery */
+.horizontal-gallery {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2rem 0;
+  margin: 0 -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.horizontal-gallery::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-gallery::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+
+.horizontal-gallery::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.horizontal-gallery::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+.gallery-scroll {
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+.gallery-item {
+  flex-shrink: 0;
+  width: 320px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-frame {
+  width: 100%;
+  height: 220px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.gallery-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--bg-primary);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-frame {
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.15),
+    0 5px 15px rgba(201, 167, 109, 0.1);
+  border-color: rgba(201, 167, 109, 0.3);
+}
+
+.gallery-item:hover .gallery-frame::after {
+  opacity: 1;
+}
+
+.gallery-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: grayscale(0) brightness(1);
+}
+
+.gallery-item:hover .gallery-frame img {
+  transform: scale(1.08);
+  filter: grayscale(0) brightness(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .photo-collage-section {
+    padding: 6rem 2rem;
+  }
+
+  .collage-grid {
+    grid-template-rows: repeat(8, 60px);
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .celebrate-section {
+    padding: 6rem 2rem;
+  }
+
+  .gallery-item {
+    width: 280px;
+  }
+
+  .gallery-frame {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-collage-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .collage-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 0;
+  }
+
+  .collage-item {
+    width: 100%;
+    height: 350px;
+    transform: none !important;
+  }
+
+  .item-1, .item-2, .item-3, .item-4 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .celebrate-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .celebrate-section::before {
+    height: 60px;
+  }
+
+  .celebrate-subtitle {
+    margin-bottom: 4rem;
+  }
+
+  .gallery-item {
+    width: 260px;
+  }
+
+  .gallery-frame {
+    height: 180px;
+  }
+
+  .horizontal-gallery {
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-collage-section {
+    padding: 4rem 1rem;
+  }
+
+  .collage-item {
+    height: 280px;
+  }
+
+  .photo-frame {
+    padding: 1rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .celebrate-section {
+    padding: 4rem 1rem;
+  }
+
+  .celebrate-section::before {
+    height: 50px;
+  }
+
+  .celebrate-subtitle {
+    margin-bottom: 3rem;
+  }
+
+  .gallery-item {
+    width: 220px;
+  }
+
+  .gallery-frame {
+    height: 160px;
+  }
+
+  .horizontal-gallery {
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .gallery-scroll {
+    gap: 1.5rem;
+  }
+}

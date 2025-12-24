@@ -1,0 +1,193 @@
+/* The Celebration Section */
+.celebration-section {
+  padding: 8rem 2rem;
+  background: var(--bg-beige);
+  position: relative;
+  overflow: hidden;
+}
+
+.celebration-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Content */
+.celebration-content {
+  position: relative;
+  z-index: 2;
+}
+
+.celebration-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.celebration-description {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 500px;
+}
+
+/* Details */
+.celebration-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.detail-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.detail-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.detail-content {
+  flex: 1;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.detail-date {
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.detail-time {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+}
+
+.detail-venue {
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.view-map-link {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.view-map-link:hover {
+  color: var(--dark-tan);
+}
+
+/* Decorative Arch */
+.celebration-arch {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  color: var(--accent-gold);
+}
+
+.celebration-arch svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .celebration-section {
+    padding: 6rem 2rem;
+  }
+
+  .celebration-container {
+    gap: 3rem;
+  }
+
+  .celebration-arch {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .celebration-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .celebration-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .celebration-arch {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .celebration-details {
+    gap: 2rem;
+  }
+
+  .detail-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .celebration-section {
+    padding: 4rem 1rem;
+  }
+
+  .celebration-details {
+    gap: 1.75rem;
+  }
+
+  .detail-item {
+    gap: 1rem;
+  }
+
+  .detail-icon {
+    font-size: 1.25rem;
+  }
+
+  .detail-label {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+  }
+
+  .detail-date,
+  .detail-venue {
+    font-size: 1rem;
+  }
+
+  .detail-time,
+  .view-map-link {
+    font-size: 0.875rem;
+  }
+
+  .celebration-arch {
+    max-width: 250px;
+  }
+}

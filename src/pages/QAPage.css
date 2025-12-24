@@ -1,0 +1,159 @@
+.qa-section {
+  padding: 8rem 2rem;
+  background: var(--bg-white);
+  min-height: calc(100vh - 80px);
+}
+
+.qa-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.qa-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+}
+
+.faq-item {
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.faq-answer {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+
+.qa-contact {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bg-cream);
+  border-radius: 4px;
+}
+
+.qa-contact h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.qa-contact p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+
+.qa-contact a {
+  color: var(--text-dark);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.qa-contact a:hover {
+  color: var(--text-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .qa-section {
+    padding: 6rem 2rem;
+  }
+
+  .qa-header {
+    margin-bottom: 4rem;
+  }
+
+  .faq-list {
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .faq-question {
+    font-size: 1.35rem;
+  }
+
+  .faq-answer {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .qa-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .qa-header {
+    margin-bottom: 3rem;
+  }
+
+  .faq-list {
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .faq-item {
+    padding-bottom: 1.75rem;
+  }
+
+  .faq-question {
+    font-size: 1.25rem;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+  }
+
+  .qa-contact {
+    padding: 2rem;
+  }
+
+  .qa-contact h3 {
+    font-size: 1.5rem;
+  }
+
+  .qa-contact p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .qa-section {
+    padding: 4rem 1rem;
+  }
+
+  .faq-question {
+    font-size: 1.15rem;
+  }
+
+  .faq-answer {
+    font-size: 0.9rem;
+  }
+
+  .qa-contact {
+    padding: 1.5rem;
+  }
+}

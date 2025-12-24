@@ -9,7 +9,9 @@
       "name": "Jesna",
       "fullName": "Jesna Mary",
       "image": "/images/jesna.png"
-    }
+    },
+    "weddingDate": "01.15.2026",
+    "venue": "St. Mary's Church, Kochi, Kerala"
   },
   "events": {
     "engagement": {

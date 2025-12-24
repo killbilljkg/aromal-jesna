@@ -1,0 +1,157 @@
+.celebration-section {
+  padding: 4rem 0 6rem;
+  background: var(--bg-white);
+  overflow: hidden;
+}
+
+.celebration-header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.celebration-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.celebration-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: celebrate-scroll 25s linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  margin: 0 0.5rem;
+}
+
+.carousel-item-small {
+  width: 14rem;
+  height: 14rem;
+}
+
+.carousel-item-large {
+  width: 14rem;
+  height: 17rem;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes celebrate-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .celebration-section {
+    padding: 3rem 0 5rem;
+  }
+
+  .celebration-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .carousel-item-small {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .carousel-item-large {
+    width: 12rem;
+    height: 15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .celebration-section {
+    padding: 3rem 0 4rem;
+  }
+
+  .celebration-header {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .celebration-description {
+    font-size: 1rem;
+  }
+
+  .carousel-item {
+    margin: 0 0.375rem;
+  }
+
+  .carousel-item-small {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .carousel-item-large {
+    width: 10rem;
+    height: 13rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .celebration-section {
+    padding: 2.5rem 0 3rem;
+  }
+
+  .celebration-header {
+    padding: 0 1rem;
+  }
+
+  .celebration-description {
+    font-size: 0.95rem;
+  }
+
+  .carousel-item-small {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .carousel-item-large {
+    width: 9rem;
+    height: 11rem;
+  }
+}

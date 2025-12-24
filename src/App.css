@@ -14,16 +14,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #2c3e50;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-color);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+  background: var(--secondary-color);
 }
 
 /* Selection color */
