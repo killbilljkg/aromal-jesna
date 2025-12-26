@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   width: max-content;
-  animation: celebrate-scroll 25s linear infinite;
+  animation: celebrate-scroll 30s linear infinite;
 }
 
 .carousel-track:hover {

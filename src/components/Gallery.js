@@ -3,14 +3,15 @@ import { motion } from 'framer-motion';
 import './Gallery.css';
 
 const Gallery = () => {
-  const images = [
-    { id: 1, url: 'https://picsum.photos/600/800?random=2', alt: 'Couple photo 1' },
-    { id: 2, url: 'https://picsum.photos/800/600?random=3', alt: 'Couple photo 2' },
-    { id: 3, url: 'https://picsum.photos/600/800?random=4', alt: 'Couple photo 3' },
-    { id: 4, url: 'https://picsum.photos/800/600?random=5', alt: 'Couple photo 4' },
-    { id: 5, url: 'https://picsum.photos/600/800?random=6', alt: 'Couple photo 5' },
-    { id: 6, url: 'https://picsum.photos/800/600?random=7', alt: 'Couple photo 6' },
-  ];
+  // Load gallery images dynamically
+  // Images should be placed in public/images/gallery/ folder
+  // Named as: 1.jpg, 2.jpg, 3.jpg, etc.
+  // Update the length number below to match your total number of images
+  const images = Array.from({ length: 16 }, (_, i) => ({
+    id: i + 1,
+    url: `${process.env.PUBLIC_URL}/images/gallery/${i + 1}.jpg`,
+    alt: `Gallery photo ${i + 1}`,
+  }));
 
   return (
     <section className="gallery-section" id="gallery">
