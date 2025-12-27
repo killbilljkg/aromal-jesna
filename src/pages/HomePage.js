@@ -33,8 +33,8 @@ const HomePage = () => {
 
   const features = [
     {
-      title: 'Our Story',
-      description: 'Discover how we met and fell in love',
+      title: 'Meet the Couple',
+      description: 'Get to know the bride and groom',
       link: '/our-story',
       image: 'https://picsum.photos/400/300?random=20'
     },

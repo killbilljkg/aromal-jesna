@@ -5,8 +5,6 @@ import HomePage from './pages/HomePage';
 import OurStoryPage from './pages/OurStoryPage';
 import GalleryPage from './pages/GalleryPage';
 import SchedulePage from './pages/SchedulePage';
-import QAPage from './pages/QAPage';
-import RegistryPage from './pages/RegistryPage';
 import RSVPPage from './pages/RSVPPage';
 
 function App() {
@@ -17,8 +15,6 @@ function App() {
         <Route path="/our-story" element={<OurStoryPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/schedule" element={<SchedulePage />} />
-        <Route path="/qa" element={<QAPage />} />
-        <Route path="/registry" element={<RegistryPage />} />
         <Route path="/rsvp" element={<RSVPPage />} />
       </Routes>
     </Router>

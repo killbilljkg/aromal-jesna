@@ -13,47 +13,67 @@ const OurStory = ({ couple }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Our Story</h2>
+          <h2 className="section-title">Meet the Couple</h2>
           <div className="section-divider"></div>
+          <p className="section-description">
+            We are honored to begin this new chapter of our lives together,
+            blessed by our families and surrounded by loved ones.
+          </p>
         </motion.div>
 
-        <div className="story-content">
+        <div className="couple-profiles">
+          {/* Groom Profile */}
           <motion.div
-            className="story-text"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="profile-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3>Welcome to Our Celebration</h3>
-            <p>
-              We're so excited to share this special day with you. Our journey began
-              in the most unexpected way, and every moment since has been filled with
-              love, laughter, and countless memories.
-            </p>
-            <p>
-              From our first meeting to this day, we've grown together, supported each
-              other's dreams, and built a foundation of love that we're thrilled to
-              celebrate with our closest family and friends.
-            </p>
-            <p>
-              Thank you for being part of our story. Your presence means the world to us,
-              and we can't wait to create more beautiful memories together.
-            </p>
+            <div className="profile-image-wrapper">
+              <img
+                src={couple?.groom?.image || '/images/aromal.jpg'}
+                alt={couple?.groom?.fullName}
+                className="profile-image"
+              />
+            </div>
+            <div className="profile-content">
+              <h3 className="profile-name">{couple?.groom?.fullName || 'Aromal Kumar'}</h3>
+              <p className="profile-title">The Groom</p>
+              <div className="profile-divider"></div>
+              <p className="profile-bio">
+                A loving son, dedicated professional, and someone who values
+                family traditions. Looking forward to building a beautiful
+                life together with the blessings of our families.
+              </p>
+            </div>
           </motion.div>
 
+          {/* Bride Profile */}
           <motion.div
-            className="story-image"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="profile-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <img
-              src="https://picsum.photos/600/800?random=1"
-              alt="Couple portrait"
-              className="couple-image"
-            />
+            <div className="profile-image-wrapper">
+              <img
+                src={couple?.bride?.image || '/images/jesna.jpg'}
+                alt={couple?.bride?.fullName}
+                className="profile-image"
+              />
+            </div>
+            <div className="profile-content">
+              <h3 className="profile-name">{couple?.bride?.fullName || 'Jesna Mary'}</h3>
+              <p className="profile-title">The Bride</p>
+              <div className="profile-divider"></div>
+              <p className="profile-bio">
+                A cherished daughter, kind-hearted soul, and someone who
+                treasures family values. Excited to start this new journey
+                with love and the support of our families.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>

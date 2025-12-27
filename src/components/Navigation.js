@@ -27,11 +27,9 @@ const Navigation = ({ couple }) => {
   };
 
   const navLinks = [
-    { name: 'Our Story', href: '/our-story' },
+    { name: 'Meet the Couple', href: '/our-story' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Schedule', href: '/schedule' },
-    { name: 'Q&A', href: '/qa' },
-    { name: 'Registry', href: '/registry' },
     { name: 'RSVP', href: '/rsvp' }
   ];
 
