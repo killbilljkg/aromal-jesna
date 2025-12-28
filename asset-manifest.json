@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/aromal-jesna/static/css/main.693b02f5.css",
+    "main.js": "/aromal-jesna/static/js/main.532a5221.js",
+    "index.html": "/aromal-jesna/index.html",
+    "main.693b02f5.css.map": "/aromal-jesna/static/css/main.693b02f5.css.map",
+    "main.532a5221.js.map": "/aromal-jesna/static/js/main.532a5221.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.693b02f5.css",
+    "static/js/main.532a5221.js"
+  ]
+}
