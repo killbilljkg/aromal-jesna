@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import CelebrationCarousel from '../components/CelebrationCarousel';
@@ -8,26 +8,27 @@ import weddingData from '../wedding-data.json';
 import './HomePage.css';
 
 const HomePage = () => {
+  const location = useLocation();
   const quickInfo = [
     {
       icon: '📅',
       title: 'Date',
-      detail: 'January 15, 2026'
+      detail: weddingData.wedding.dateFormatted
     },
     {
       icon: '⏰',
       title: 'Time',
-      detail: '3:00 PM'
+      detail: weddingData.wedding.time
     },
     {
       icon: '📍',
       title: 'Venue',
-      detail: 'St. Mary\'s Church, Kochi'
+      detail: weddingData.wedding.venue.fullAddress
     },
     {
       icon: '👔',
       title: 'Dress Code',
-      detail: 'Semi-Formal'
+      detail: weddingData.wedding.dressCode
     }
   ];
 
@@ -129,7 +130,7 @@ const HomePage = () => {
                 <div className="feature-content">
                   <h3 className="feature-title">{feature.title}</h3>
                   <p className="feature-description">{feature.description}</p>
-                  <Link to={feature.link} className="feature-link">
+                  <Link to={`${feature.link}${location.search}`} className="feature-link">
                     Learn More →
                   </Link>
                 </div>
@@ -148,13 +149,12 @@ const HomePage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="cta-title">Save the Date</h2>
-          <p className="cta-subtitle">January 15, 2026</p>
+          <h2 className="cta-title">{weddingData.siteContent.ctaTitle}</h2>
+          <p className="cta-subtitle">{weddingData.wedding.dateFormatted}</p>
           <p className="cta-description">
-            We would be honored to have you celebrate this special day with us.
-            Please RSVP by December 1st, 2025.
+            {weddingData.siteContent.ctaDescription}
           </p>
-          <Link to="/rsvp" className="cta-button">
+          <Link to={`/rsvp${location.search}`} className="cta-button">
             RSVP Now
           </Link>
         </motion.div>

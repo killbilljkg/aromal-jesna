@@ -33,6 +33,11 @@ const Navigation = ({ couple }) => {
     { name: 'RSVP', href: '/rsvp' }
   ];
 
+  // Preserve query parameters when navigating
+  const getFullPath = (href) => {
+    return `${href}${location.search}`;
+  };
+
   return (
     <motion.nav
       className={`navigation ${scrolled || !isHomePage ? 'scrolled' : ''}`}
@@ -41,7 +46,7 @@ const Navigation = ({ couple }) => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
+        <Link to={`/${location.search}`} className="nav-logo">
           <div className="nav-monogram">
             {couple?.groom.name.charAt(0)} & {couple?.bride.name.charAt(0)}
           </div>
@@ -52,7 +57,7 @@ const Navigation = ({ couple }) => {
           {navLinks.map((link, index) => (
             <Link
               key={link.name}
-              to={link.href}
+              to={getFullPath(link.href)}
               className="nav-link"
             >
               {link.name}
@@ -78,7 +83,7 @@ const Navigation = ({ couple }) => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.href}
+              to={getFullPath(link.href)}
               className="mobile-nav-link"
               onClick={closeMobileMenu}
             >

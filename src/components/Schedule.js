@@ -1,25 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import weddingData from '../wedding-data.json';
 import './Schedule.css';
 
 const Schedule = ({ events }) => {
-  const scheduleItems = [
-    {
-      time: '3:00 PM',
-      title: 'Ceremony',
-      description: 'Join us as we exchange our vows in an intimate ceremony surrounded by our loved ones.',
-    },
-    {
-      time: '4:30 PM',
-      title: 'Cocktail Hour',
-      description: 'Enjoy drinks and hors d\'oeuvres while we capture photos with our families.',
-    },
-    {
-      time: '6:00 PM',
-      title: 'Reception',
-      description: 'Let\'s celebrate with dinner, dancing, and making memories that will last a lifetime.',
-    },
-  ];
+  const scheduleItems = weddingData.schedule;
 
   return (
     <section className="schedule-section" id="schedule">
@@ -47,8 +32,8 @@ const Schedule = ({ events }) => {
             >
               <div className="schedule-time">{item.time}</div>
               <div className="schedule-content">
+                <div className="schedule-icon">{item.icon}</div>
                 <h3 className="schedule-title">{item.title}</h3>
-                <p className="schedule-description">{item.description}</p>
               </div>
             </motion.div>
           ))}

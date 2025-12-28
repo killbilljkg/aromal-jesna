@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import weddingData from '../wedding-data.json';
 import './OurStory.css';
 
 const OurStory = ({ couple }) => {
@@ -16,8 +17,7 @@ const OurStory = ({ couple }) => {
           <h2 className="section-title">Meet the Couple</h2>
           <div className="section-divider"></div>
           <p className="section-description">
-            We are honored to begin this new chapter of our lives together,
-            blessed by our families and surrounded by loved ones.
+            {weddingData.siteContent.meetTheCoupleDescription}
           </p>
         </motion.div>
 
@@ -42,9 +42,7 @@ const OurStory = ({ couple }) => {
               <p className="profile-title">The Groom</p>
               <div className="profile-divider"></div>
               <p className="profile-bio">
-                A loving son, dedicated professional, and someone who values
-                family traditions. Looking forward to building a beautiful
-                life together with the blessings of our families.
+                {couple?.groom?.bio || weddingData.couple.groom.bio}
               </p>
             </div>
           </motion.div>
@@ -69,9 +67,7 @@ const OurStory = ({ couple }) => {
               <p className="profile-title">The Bride</p>
               <div className="profile-divider"></div>
               <p className="profile-bio">
-                A cherished daughter, kind-hearted soul, and someone who
-                treasures family values. Excited to start this new journey
-                with love and the support of our families.
+                {couple?.bride?.bio || weddingData.couple.bride.bio}
               </p>
             </div>
           </motion.div>

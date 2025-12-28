@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import weddingData from '../wedding-data.json';
 import './HeroSection.css';
 
 const HeroSection = ({ couple }) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const inviteeName = searchParams.get('name');
+
   const heroStyle = {
     '--hero-bg-image': `url(${process.env.PUBLIC_URL}/images/hero-background.jpg)`
+  };
+
+  const getSubtitle = () => {
+    if (inviteeName) {
+      return weddingData.siteContent.personalizedGreeting.replace('{name}', inviteeName);
+    }
+    return weddingData.siteContent.heroSubtitle;
   };
 
   return (
@@ -22,7 +35,7 @@ const HeroSection = ({ couple }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            You are invited to celebrate the wedding of
+            {getSubtitle()}
           </motion.div>
 
           <motion.h1
@@ -42,17 +55,10 @@ const HeroSection = ({ couple }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            {couple.weddingDate}
+            {weddingData.wedding.dateFormatted}
           </motion.div>
 
-          <motion.div
-            className="hero-venue"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-          >
-            {couple.venue}
-          </motion.div>
+        
         </motion.div>
       </div>
     </section>

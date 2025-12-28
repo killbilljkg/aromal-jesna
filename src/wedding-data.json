@@ -2,43 +2,71 @@
   "couple": {
     "groom": {
       "name": "Aromal",
-      "fullName": "Aromal Kumar",
-      "image": "/images/aromal.jpg"
+      "fullName": "Aromal Joseph KM",
+      "image": "/images/aromal.jpg",
+      "bio": "A loving son, dedicated professional, and someone who values family traditions. Looking forward to building a beautiful life together with the blessings of our families."
     },
     "bride": {
       "name": "Jesna",
-      "fullName": "Jesna Mary",
-      "image": "/images/jesna.jpg"
+      "fullName": "Jesna Jose",
+      "image": "/images/jesna.jpg",
+      "bio": "A cherished daughter, kind-hearted soul, and someone who treasures family values. Excited to start this new journey with love and the support of our families."
+    }
+  },
+  "wedding": {
+    "date": "2026-01-15",
+    "dateFormatted": "January 15, 2026",
+    "time": "3:00 PM",
+    "venue": {
+      "name": "St. Mary's Church",
+      "location": "Kochi",
+      "fullAddress": "St. Mary's Church, Kochi, Kerala",
+      "mapLink": "https://maps.google.com"
     },
-    "weddingDate": "01.15.2026",
-    "venue": "St. Mary's Church, Kochi, Kerala"
+    "dressCode": "Semi-Formal"
   },
   "events": {
-    "engagement": {
-      "title": "Engagement Ceremony",
-      "date": "2025-12-25",
-      "time": "10:00 AM",
-      "venue": {
-        "name": "Green Valley Gardens",
-        "address": "123 Garden Street, Kochi, Kerala",
-        "mapLink": "https://maps.google.com"
-      },
-      "description": "Join us as we celebrate our engagement and the beginning of our journey together"
-    },
     "wedding": {
       "title": "Wedding Ceremony",
       "date": "2026-01-15",
-      "time": "11:00 AM",
+      "time": "3:00 PM",
       "venue": {
         "name": "St. Mary's Church",
-        "address": "456 Church Road, Kochi, Kerala",
+        "address": "St. Mary's Church, Kochi, Kerala",
         "mapLink": "https://maps.google.com"
       },
       "description": "We joyfully invite you to witness and celebrate our wedding"
     }
   },
+  "schedule": [
+    {
+      "time": "3:00 PM",
+      "title": "Ceremony",
+      "icon": "💒"
+    },
+    {
+      "time": "4:30 PM",
+      "title": "Reception",
+      "icon": "🎉"
+    },
+    {
+      "time": "6:00 PM",
+      "title": "Dinner",
+      "icon": "🍽️"
+    }
+  ],
   "rsvp": {
     "email": "rsvp@aromaljesna.com",
-    "phone": "+91 1234567890"
+    "phone": "+91 1234567890",
+    "deadline": "December 1st, 2025"
+  },
+  "siteContent": {
+    "heroSubtitle": "You are invited to celebrate the wedding of",
+    "personalizedGreeting": "Hi {name}, you are invited to celebrate the wedding of",
+    "meetTheCoupleDescription": "Our story is made of little moments, shared laughter, and countless prayers. From strangers to best friends, and now partners for life, we step into this new journey hand in hand—guided by love and surrounded by those who mean the most to us.",
+    "celebrationTitle": "Join Our Celebration",
+    "celebrationDescription": "Every moment we share is a celebration of love and joy. We can't wait to create beautiful memories together with you.",
+    "ctaTitle": "Save the Date",
+    "ctaDescription": "We would be honored to have you celebrate this special day with us. Please RSVP by December 1st, 2025."
   }
 }

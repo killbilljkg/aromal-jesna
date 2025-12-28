@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import weddingData from '../wedding-data.json';
 import './RSVPForm.css';
 
 const RSVPForm = ({ rsvpInfo }) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const inviteeName = searchParams.get('name');
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,6 +16,17 @@ const RSVPForm = ({ rsvpInfo }) => {
     guests: '1',
     message: ''
   });
+
+  useEffect(() => {
+    if (inviteeName) {
+      const nameParts = inviteeName.trim().split(' ');
+      setFormData(prev => ({
+        ...prev,
+        firstName: nameParts[0] || '',
+        lastName: nameParts.slice(1).join(' ') || ''
+      }));
+    }
+  }, [inviteeName]);
 
   const handleChange = (e) => {
     setFormData({
@@ -50,7 +67,7 @@ Message: ${formData.message}
           <h2 className="rsvp-title">RSVP</h2>
           <div className="section-divider"></div>
           <p className="rsvp-subtitle">
-            Kindly respond by December 1st, 2025
+            Kindly respond by {weddingData.rsvp.deadline}
           </p>
         </motion.div>
 
