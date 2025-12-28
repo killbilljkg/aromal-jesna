@@ -2,7 +2,7 @@
   "name": "wedding-invitation",
   "version": "1.0.0",
   "description": "Beautiful wedding invitation website with RSVP",
-  "homepage": "https://killbilljkg.github.io/aromal-jesna",
+  "homepage": "https://aromalwedsjesna.story-labs.in",
   "private": true,
   "dependencies": {
     "@react-three/drei": "^9.88.0",
