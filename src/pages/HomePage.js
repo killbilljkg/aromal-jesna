@@ -32,25 +32,25 @@ const HomePage = () => {
       title: 'Meet the Couple',
       description: 'Get to know the bride and groom',
       link: '/our-story',
-      image: 'https://picsum.photos/400/300?random=20'
+      image: `${process.env.PUBLIC_URL}/images/features/couple.jpg`
     },
     {
       title: 'Photo Gallery',
       description: 'Browse our favorite moments together',
       link: '/gallery',
-      image: 'https://picsum.photos/400/300?random=21'
+      image: `${process.env.PUBLIC_URL}/images/features/gallery.jpg`
     },
     {
       title: 'Event Schedule',
       description: 'Timeline of our special day',
       link: '/schedule',
-      image: 'https://picsum.photos/400/300?random=22'
+      image: `${process.env.PUBLIC_URL}/images/features/schedule.jpg`
     },
     {
       title: 'RSVP',
       description: 'Let us know you\'re coming',
       link: '/rsvp',
-      image: 'https://picsum.photos/400/300?random=23'
+      image: `${process.env.PUBLIC_URL}/images/features/rsvp.jpg`
     }
   ];
 
