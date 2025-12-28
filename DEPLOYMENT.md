@@ -8,21 +8,23 @@ This project includes an automated CI/CD pipeline using GitHub Actions that buil
 
 The workflow (`.github/workflows/build-deploy.yml`) runs automatically on:
 - Every push to the `main` branch
-- Every pull request targeting `main`
+- Manual trigger via workflow_dispatch
 
 ### What the Workflow Does
 
 #### 1. Build Job
 - Checks out the code
-- Sets up Node.js 18.x
-- Installs dependencies using `npm ci`
-- Builds the React application
-- Uploads build artifacts (stored for 7 days)
+- Sets up Node.js 20.x
+- Installs dependencies using `npm install`
+- Builds the React application with `CI=false`
+- Adds `.nojekyll` file to disable Jekyll processing
+- Creates CNAME file for custom domain
+- Uploads build artifacts using GitHub Pages artifact action
 
 #### 2. Deploy Job (only on push to main)
-- Rebuilds the project
-- Deploys to GitHub Pages using the `gh-pages` branch
-- Automatically publishes to: `https://killbilljkg.github.io/aromal-jesna`
+- Uses the official `actions/deploy-pages@v4` action
+- Deploys artifacts to GitHub Pages
+- Automatically publishes to: `https://aromalwedsjesna.story-labs.in`
 
 ### Setup Instructions
 
@@ -31,58 +33,48 @@ The workflow (`.github/workflows/build-deploy.yml`) runs automatically on:
 1. Go to your repository: `https://github.com/killbilljkg/aromal-jesna`
 2. Click **Settings** → **Pages**
 3. Under "Source", select:
-   - Source: **Deploy from a branch**
-   - Branch: **gh-pages** / **(root)**
-4. Click **Save**
+   - Source: **GitHub Actions**
+4. The custom domain `aromalwedsjesna.story-labs.in` will be automatically configured via the CNAME file in the workflow
 
 #### 2. Repository Permissions
 
-The workflow needs write permissions:
-1. Go to **Settings** → **Actions** → **General**
-2. Scroll to "Workflow permissions"
-3. Select **"Read and write permissions"**
-4. Check **"Allow GitHub Actions to create and approve pull requests"**
-5. Click **Save**
+The workflow requires specific permissions (already configured in the workflow file):
+- `contents: read` - To checkout the code
+- `pages: write` - To deploy to GitHub Pages
+- `id-token: write` - For GitHub Pages deployment authentication
+
+These are automatically handled by the workflow configuration. No additional repository settings are required.
 
 ### Manual Deployment
 
-If you want to deploy manually:
+You can trigger a manual deployment using the workflow_dispatch trigger:
 
-```bash
-# Build the project
-npm run build
+1. Go to **Actions** tab in your repository
+2. Select **Deploy React App to GitHub Pages**
+3. Click **Run workflow**
+4. Select the branch and click **Run workflow**
 
-# Install gh-pages (if not installed)
-npm install --save-dev gh-pages
-
-# Deploy to GitHub Pages
-npx gh-pages -d build
-```
+Alternatively, any push to the `main` branch will automatically trigger a deployment.
 
 ### Environment Variables
 
 The workflow uses:
 - `CI=false` - Treats warnings as warnings (not errors) during build
-- `GITHUB_TOKEN` - Automatically provided by GitHub Actions
 
-### Custom Domain (Optional)
+### Custom Domain Setup
 
-To use a custom domain:
+The workflow is configured to deploy to `aromalwedsjesna.story-labs.in`. To make this work:
 
-1. Update `.github/workflows/build-deploy.yml`:
-   ```yaml
-   - name: Deploy to GitHub Pages
-     uses: peaceiris/actions-gh-pages@v3
-     with:
-       github_token: ${{ secrets.GITHUB_TOKEN }}
-       publish_dir: ./build
-       cname: your-domain.com  # Change this to your domain
+1. Add a CNAME record in your DNS settings for `story-labs.in`:
+   ```
+   Type: CNAME
+   Name: aromalwedsjesna
+   Value: killbilljkg.github.io
    ```
 
-2. Add a CNAME record in your domain's DNS settings:
-   ```
-   CNAME: killbilljkg.github.io
-   ```
+2. The workflow automatically creates a CNAME file in the build output
+
+3. GitHub Pages will verify your domain and enable HTTPS automatically
 
 ### Viewing Build Status
 
@@ -92,16 +84,23 @@ To use a custom domain:
 ### Troubleshooting
 
 **Build fails with permission error:**
-- Check repository permissions under Settings → Actions → General
+- Ensure GitHub Pages is set to deploy from "GitHub Actions" in Settings → Pages
+- Check that the workflow has necessary permissions (already configured in workflow file)
 
 **Pages not updating:**
-- Ensure GitHub Pages is enabled
-- Check that gh-pages branch exists
-- Verify workflow completed successfully
+- Ensure GitHub Pages source is set to "GitHub Actions"
+- Verify workflow completed successfully in Actions tab
+- Check deployment environment in repository settings
 
 **404 errors on deployed site:**
-- Add `"homepage"` field to package.json (already configured)
-- Ensure routes use HashRouter or BrowserRouter with basename
+- Verify `"homepage"` field in package.json matches your domain (already configured)
+- Ensure `.nojekyll` file is being created (handled by workflow)
+- Check that CNAME record is properly configured in DNS
+
+**Custom domain not working:**
+- Verify CNAME DNS record: `aromalwedsjesna` → `killbilljkg.github.io`
+- Wait for DNS propagation (can take up to 24-48 hours)
+- Check domain verification in Settings → Pages
 
 ### Local Development
 
@@ -123,7 +122,7 @@ npx serve -s build
 
 Share links with guest names:
 ```
-https://killbilljkg.github.io/aromal-jesna/?name=John%20Smith
+https://aromalwedsjesna.story-labs.in/?name=John%20Smith
 ```
 
 The site will automatically:
