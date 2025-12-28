@@ -24,11 +24,6 @@ const HomePage = () => {
       icon: '📍',
       title: 'Venue',
       detail: weddingData.wedding.venue.fullAddress
-    },
-    {
-      icon: '👔',
-      title: 'Dress Code',
-      detail: weddingData.wedding.dressCode
     }
   ];
 
