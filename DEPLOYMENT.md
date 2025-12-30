@@ -120,11 +120,28 @@ npx serve -s build
 
 ### Personalized Invitations
 
+#### Individual Invitations
+
 Share links with guest names:
 ```
 https://aromalwedsjesna.story-labs.in/?name=John%20Smith
 ```
 
 The site will automatically:
-- Show personalized greeting
+- Show personalized greeting: "Hi John Smith, you are invited..."
 - Pre-fill RSVP form with the guest's name
+
+#### Group Invitations
+
+Share links for groups (college, office, etc.):
+```
+https://aromalwedsjesna.story-labs.in/?group=college
+https://aromalwedsjesna.story-labs.in/?group=office
+https://aromalwedsjesna.story-labs.in/?group=family
+```
+
+The site will automatically:
+- Show group greeting: "Dear College, you are invited..."
+- Display group badge in RSVP form
+- Include group name in RSVP email subject and body
+- Allow each person from the group to submit their own RSVP

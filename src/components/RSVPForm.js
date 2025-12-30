@@ -8,17 +8,24 @@ const RSVPForm = ({ rsvpInfo }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const inviteeName = searchParams.get('name');
+  const groupName = searchParams.get('group');
 
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     attendance: '',
-    guests: '1',
-    message: ''
+    message: '',
+    group: groupName || ''
+  });
+
+  const [submitStatus, setSubmitStatus] = useState({
+    loading: false,
+    success: false,
+    error: null
   });
 
   useEffect(() => {
-    if (inviteeName) {
+    if (inviteeName && !groupName) {
       const nameParts = inviteeName.trim().split(' ');
       setFormData(prev => ({
         ...prev,
@@ -26,7 +33,7 @@ const RSVPForm = ({ rsvpInfo }) => {
         lastName: nameParts.slice(1).join(' ') || ''
       }));
     }
-  }, [inviteeName]);
+  }, [inviteeName, groupName]);
 
   const handleChange = (e) => {
     setFormData({
@@ -35,17 +42,70 @@ const RSVPForm = ({ rsvpInfo }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = `RSVP - ${formData.firstName} ${formData.lastName}`;
-    const body = `
-Name: ${formData.firstName} ${formData.lastName}
-Attendance: ${formData.attendance}
-Number of Guests: ${formData.guests}
-Message: ${formData.message}
-    `.trim();
+    setSubmitStatus({ loading: true, success: false, error: null });
 
-    window.open(`mailto:${rsvpInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+    // Prepare data for SheetDB API
+    const rsvpData = {
+      data: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        fullName: `${formData.firstName} ${formData.lastName}`,
+        attendance: formData.attendance,
+        message: formData.message,
+        group: formData.group || '',
+        invitationType: formData.group ? 'group' : 'individual',
+        timestamp: new Date().toISOString(),
+        date: new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      }
+    };
+
+    try {
+      const response = await fetch('https://sheetdb.io/api/v1/d3etfidhvnoh4', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rsvpData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit RSVP');
+      }
+
+      const result = await response.json();
+      console.log('RSVP submitted successfully:', result);
+
+      setSubmitStatus({ loading: false, success: true, error: null });
+
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          attendance: '',
+          message: '',
+          group: groupName || ''
+        });
+        setSubmitStatus({ loading: false, success: false, error: null });
+      }, 3000);
+
+    } catch (error) {
+      console.error('Error submitting RSVP:', error);
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: 'Failed to submit RSVP. Please try again.'
+      });
+    }
   };
 
   return (
@@ -66,6 +126,11 @@ Message: ${formData.message}
         >
           <h2 className="rsvp-title">RSVP</h2>
           <div className="section-divider"></div>
+          {groupName && (
+            <p className="rsvp-group-label">
+              Invitation for {groupName.charAt(0).toUpperCase() + groupName.slice(1)} Group
+            </p>
+          )}
           <p className="rsvp-subtitle">
             Kindly respond by {weddingData.rsvp.deadline}
           </p>
@@ -119,23 +184,6 @@ Message: ${formData.message}
             </select>
           </div>
 
-          {formData.attendance === 'Joyfully accepts' && (
-            <div className="form-group">
-              <label htmlFor="guests">Number of Guests</label>
-              <select
-                id="guests"
-                name="guests"
-                value={formData.guests}
-                onChange={handleChange}
-              >
-                <option value="1">1 Guest</option>
-                <option value="2">2 Guests</option>
-                <option value="3">3 Guests</option>
-                <option value="4">4 Guests</option>
-              </select>
-            </div>
-          )}
-
           <div className="form-group">
             <label htmlFor="message">Message to the Couple</label>
             <textarea
@@ -148,8 +196,24 @@ Message: ${formData.message}
             />
           </div>
 
-          <button type="submit" className="rsvp-button">
-            Submit RSVP
+          {submitStatus.success && (
+            <div className="rsvp-success-message">
+              ✓ Thank you! Your RSVP has been submitted successfully.
+            </div>
+          )}
+
+          {submitStatus.error && (
+            <div className="rsvp-error-message">
+              ✗ {submitStatus.error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="rsvp-button"
+            disabled={submitStatus.loading}
+          >
+            {submitStatus.loading ? 'Submitting...' : 'Submit RSVP'}
           </button>
         </motion.form>
       </motion.div>

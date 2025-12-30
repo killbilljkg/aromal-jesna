@@ -29,6 +29,18 @@
   margin-bottom: 0;
 }
 
+.rsvp-group-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-color, #c9a98f);
+  margin: 1rem auto 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(201, 169, 143, 0.1);
+  border-radius: 20px;
+  display: inline-block;
+}
+
 .rsvp-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
@@ -99,6 +111,32 @@
   padding-right: 2.5rem;
 }
 
+.rsvp-success-message {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.rsvp-error-message {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+}
+
 .rsvp-button {
   background: var(--text-dark);
   color: white;
@@ -115,9 +153,17 @@
   margin-top: 1rem;
 }
 
-.rsvp-button:hover {
+.rsvp-button:hover:not(:disabled) {
   background: white;
   color: var(--text-dark);
+}
+
+.rsvp-button:disabled {
+  background: #d1d5db;
+  border-color: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* Responsive Design */
