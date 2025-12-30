@@ -13,6 +13,7 @@ const RSVPForm = ({ rsvpInfo }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    email: '',
     attendance: '',
     message: '',
     group: groupName || ''
@@ -52,6 +53,7 @@ const RSVPForm = ({ rsvpInfo }) => {
         firstName: formData.firstName,
         lastName: formData.lastName,
         fullName: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email || '',
         attendance: formData.attendance,
         message: formData.message,
         group: formData.group || '',
@@ -91,6 +93,7 @@ const RSVPForm = ({ rsvpInfo }) => {
         setFormData({
           firstName: '',
           lastName: '',
+          email: '',
           attendance: '',
           message: '',
           group: groupName || ''
@@ -167,6 +170,18 @@ const RSVPForm = ({ rsvpInfo }) => {
                 required
               />
             </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your.email@gmail.com"
+            />
           </div>
 
           <div className="form-group">
