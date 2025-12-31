@@ -49,6 +49,90 @@
   line-height: 1.6;
 }
 
+/* Date Card Calendar */
+.quick-info-card.has-calendar {
+  position: relative;
+}
+
+.date-card-calendar {
+  position: relative;
+  margin-top: 1.25rem;
+}
+
+.date-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent-gold, #c9a98f);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(201, 169, 143, 0.3);
+}
+
+.date-calendar-btn:hover {
+  background: #b8947d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(201, 169, 143, 0.4);
+}
+
+.date-calendar-btn .dropdown-arrow {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
+}
+
+.date-calendar-btn .dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.date-calendar-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.date-calendar-dropdown .calendar-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-decoration: none;
+  text-align: left;
+}
+
+.date-calendar-dropdown .calendar-option:hover {
+  background: var(--bg-cream, #f9f6f3);
+}
+
+.date-calendar-dropdown .calendar-option:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.date-calendar-dropdown .option-icon {
+  font-size: 1rem;
+}
+
 /* Features Section */
 .features-section {
   padding: 6rem 2rem;
@@ -284,5 +368,19 @@
   .cta-button {
     padding: 1rem 2.5rem;
     font-size: 0.9rem;
+  }
+
+  .date-calendar-btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .date-calendar-dropdown {
+    min-width: 160px;
+  }
+
+  .date-calendar-dropdown .calendar-option {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.8rem;
   }
 }

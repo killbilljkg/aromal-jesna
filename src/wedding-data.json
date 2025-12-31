@@ -2,37 +2,38 @@
   "couple": {
     "groom": {
       "name": "Aromal",
-      "fullName": "Aromal Joseph KM",
+      "fullName": "Aromal Joseph K M",
       "image": "/images/aromal.jpg",
-      "bio": "A loving son, dedicated professional, and someone who values family traditions. Looking forward to building a beautiful life together with the blessings of our families."
+      "bio": "Born in the scenic village of Naduvil in the heart of Kannur, Aromal is a loving son and a professional who deeply values family traditions. A proud alumnus of St. Mary's EMHS, JNV Kannur, and Nirmala HSS Chemperi, he went on to earn his B.Tech Honours from Vimal Jyothi Engineering College. Professionally, he began his journey as a System Engineer at TCS and currently works as a Site Reliability Engineer at the AdTech startup, Kayzen. A true 'Jack of all trades,' Aromal has a curious mind and dabbles in a bit of everything. When he isn’t working, you can find him capturing moments through photography or exploring new roads on his bike. He looks forward to building a beautiful life ahead with the blessings of friends and family."
     },
     "bride": {
       "name": "Jesna",
       "fullName": "Jesna Jose",
       "image": "/images/jesna.jpg",
-      "bio": "A cherished daughter, kind-hearted soul, and someone who treasures family values. Excited to start this new journey with love and the support of our families."
+      "bio": "Born in Muscat but raised in the village of Meladoor, Thrissur, Jesna is a mix of calm vibes and an extroverted heart. After her school days at Holy Child and St. Antony’s Mala, she pursued her medical dreams at Govt Villupuram Medical College, Tamil Nadu. A true high-achiever, she has already cracked the UPSC, securing a position as a Railway Doctor—a testament to her dedication and brilliance. Currently, she is further specializing as a PG student in Anesthesia at Govt Medical College, Thrissur. To most, she comes across as calm and poised, but her inner circle knows her as a lively extrovert who loves a good laugh. She’s super ambitious about her career but stays deeply rooted in her family traditions. When she’s not navigating medical chaos, you’ll find her dancing or in her garden. For Jesna, life is about balance—working hard toward her goals while staying grounded in faith and family"
     }
   },
   "wedding": {
-    "date": "2026-01-15",
-    "dateFormatted": "January 15, 2026",
+    "date": "2026-01-29",
+    "dateFormatted": "January 29, 2026",
     "time": "3:00 PM",
     "venue": {
-      "name": "St. Mary's Church",
-      "location": "Kochi",
-      "fullAddress": "St. Mary's Church, Kochi, Kerala",
-      "mapLink": "https://maps.google.com"
-    }
+      "name": "St. George Church",
+      "location": "Chempanthotty",
+      "fullAddress": "St. George Church, Chempanthotty, Kerala",
+      "mapLink": "https://maps.app.goo.gl/5ZgMu4uXJyXNgi3a6"
+    },
+    "dressCode": "Preferably Semi-Formal with pastel shades"
   },
   "events": {
     "wedding": {
       "title": "Wedding Ceremony",
-      "date": "2026-01-15",
+      "date": "2026-01-29",
       "time": "3:00 PM",
       "venue": {
-        "name": "St. Mary's Church",
-        "address": "St. Mary's Church, Kochi, Kerala",
-        "mapLink": "https://maps.google.com"
+        "name": "St. George Church",
+        "address": "St. George Church, Chempanthotty, Kerala",
+        "mapLink": "https://maps.app.goo.gl/5ZgMu4uXJyXNgi3a6"
       },
       "description": "We joyfully invite you to witness and celebrate our wedding"
     }
@@ -40,33 +41,47 @@
   "schedule": [
     {
       "time": "3:00 PM",
-      "title": "Ceremony",
+      "title": "Holy Mass and Wedding Ceremony",
       "icon": "💒"
     },
     {
-      "time": "4:30 PM",
-      "title": "Reception",
+      "time": "6:00 PM",
+      "title": "Home Entering Ceremony",
       "icon": "🎉"
     },
     {
-      "time": "6:00 PM",
-      "title": "Dinner",
-      "icon": "🍽️"
+      "time": "6:30 PM",
+      "title": "Madhuramveppu",
+      "icon": "🥧"
+    },
+    {
+      "time": "7:00 PM",
+      "title": "Reception and Dinner",
+      "icon": "🍲"
+    },
+    {
+      "time": "9:00 PM",
+      "title": "DJ Night",
+      "icon": "🕺💃🏼"
+    },
+    {
+      "time": "10:30 PM",
+      "title": "Event Conclusion",
+      "icon": "🌙"
     }
   ],
   "rsvp": {
     "email": "rsvp@aromaljesna.com",
-    "phone": "+91 1234567890",
-    "deadline": "December 1st, 2025"
+    "phone": "+91 8547731095",
+    "deadline": "January 10th, 2026"
   },
   "siteContent": {
     "heroSubtitle": "You are invited to celebrate the wedding of",
     "personalizedGreeting": "Hi {name}, you are invited to celebrate the wedding of",
-    "groupGreeting": "Dear {group}, you are invited to celebrate the wedding of",
     "meetTheCoupleDescription": "Our story is made of little moments, shared laughter, and countless prayers. From strangers to best friends, and now partners for life, we step into this new journey hand in hand—guided by love and surrounded by those who mean the most to us.",
     "celebrationTitle": "Join Our Celebration",
     "celebrationDescription": "Every moment we share is a celebration of love and joy. We can't wait to create beautiful memories together with you.",
     "ctaTitle": "Save the Date",
-    "ctaDescription": "We would be honored to have you celebrate this special day with us. Please RSVP by December 1st, 2025."
+    "ctaDescription": "We would be honored to have you celebrate this special day with us. Please RSVP by January 10th, 2026."
   }
 }

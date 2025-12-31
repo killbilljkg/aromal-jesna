@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
@@ -9,11 +9,58 @@ import './HomePage.css';
 
 const HomePage = () => {
   const location = useLocation();
+  const [showCalendarMenu, setShowCalendarMenu] = useState(false);
+
+  const generateCalendarLinks = () => {
+    const wedding = weddingData.wedding;
+    const eventDate = new Date(wedding.date + 'T15:00:00');
+    const endDate = new Date(wedding.date + 'T22:30:00');
+
+    const formatDateForGoogle = (date) => {
+      return date.toISOString().replace(/-|:|\.\d{3}/g, '');
+    };
+
+    const title = encodeURIComponent('Aromal & Jesna Wedding');
+    const locationStr = encodeURIComponent(wedding.venue.fullAddress);
+    const details = encodeURIComponent('Wedding Ceremony at ' + wedding.venue.name);
+
+    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatDateForGoogle(eventDate)}/${formatDateForGoogle(endDate)}&location=${locationStr}&details=${details}`;
+    const outlookUrl = `https://outlook.live.com/calendar/0/action/compose?subject=${title}&startdt=${eventDate.toISOString()}&enddt=${endDate.toISOString()}&location=${locationStr}&body=${details}`;
+
+    const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${formatDateForGoogle(eventDate)}
+DTEND:${formatDateForGoogle(endDate)}
+SUMMARY:Aromal & Jesna Wedding
+LOCATION:${wedding.venue.fullAddress}
+DESCRIPTION:Wedding Ceremony at ${wedding.venue.name}
+END:VEVENT
+END:VCALENDAR`;
+
+    return { googleUrl, outlookUrl, icsContent };
+  };
+
+  const handleDownloadICS = () => {
+    const { icsContent } = generateCalendarLinks();
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'aromal-jesna-wedding.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setShowCalendarMenu(false);
+  };
+
+  const { googleUrl, outlookUrl } = generateCalendarLinks();
+
   const quickInfo = [
     {
       icon: '📅',
       title: 'Date',
-      detail: weddingData.wedding.dateFormatted
+      detail: weddingData.wedding.dateFormatted,
+      hasCalendar: true
     },
     {
       icon: '⏰',
@@ -75,7 +122,7 @@ const HomePage = () => {
             {quickInfo.map((info, index) => (
               <motion.div
                 key={index}
-                className="quick-info-card"
+                className={`quick-info-card ${info.hasCalendar ? 'has-calendar' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -84,6 +131,56 @@ const HomePage = () => {
                 <div className="info-icon">{info.icon}</div>
                 <h3 className="info-title">{info.title}</h3>
                 <p className="info-detail">{info.detail}</p>
+                {info.hasCalendar && (
+                  <div className="date-card-calendar">
+                    <button
+                      className="date-calendar-btn"
+                      onClick={() => setShowCalendarMenu(!showCalendarMenu)}
+                    >
+                      Add to Calendar
+                      <span className={`dropdown-arrow ${showCalendarMenu ? 'open' : ''}`}>▼</span>
+                    </button>
+                    <AnimatePresence>
+                      {showCalendarMenu && (
+                        <motion.div
+                          className="date-calendar-dropdown"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <a
+                            href={googleUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="calendar-option"
+                            onClick={() => setShowCalendarMenu(false)}
+                          >
+                            <span className="option-icon">📆</span>
+                            Google Calendar
+                          </a>
+                          <button
+                            className="calendar-option"
+                            onClick={handleDownloadICS}
+                          >
+                            <span className="option-icon">🍎</span>
+                            Apple Calendar
+                          </button>
+                          <a
+                            href={outlookUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="calendar-option"
+                            onClick={() => setShowCalendarMenu(false)}
+                          >
+                            <span className="option-icon">📧</span>
+                            Outlook
+                          </a>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>

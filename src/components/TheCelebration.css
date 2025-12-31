@@ -102,6 +102,90 @@
   color: var(--dark-tan);
 }
 
+/* Add to Calendar */
+.add-to-calendar-wrapper {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.add-to-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
+  background: var(--accent-gold, #c9a98f);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201, 169, 143, 0.3);
+}
+
+.add-to-calendar-btn:hover {
+  background: var(--dark-tan, #b8947d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 169, 143, 0.4);
+}
+
+.calendar-icon {
+  font-size: 1.1rem;
+}
+
+.dropdown-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+  margin-left: 0.25rem;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.calendar-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  min-width: 200px;
+  z-index: 100;
+}
+
+.calendar-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-decoration: none;
+  text-align: left;
+}
+
+.calendar-option:hover {
+  background: var(--bg-beige, #f9f6f3);
+}
+
+.calendar-option:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.option-icon {
+  font-size: 1.1rem;
+}
+
 /* Decorative Arch */
 .celebration-arch {
   position: relative;
