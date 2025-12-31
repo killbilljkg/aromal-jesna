@@ -78,6 +78,7 @@
   "siteContent": {
     "heroSubtitle": "You are invited to celebrate the wedding of",
     "personalizedGreeting": "Hi {name}, you are invited to celebrate the wedding of",
+    "groupGreeting": "Dear {group}, you are invited to celebrate the wedding of",
     "meetTheCoupleDescription": "Our story is made of little moments, shared laughter, and countless prayers. From strangers to best friends, and now partners for life, we step into this new journey hand in hand—guided by love and surrounded by those who mean the most to us.",
     "celebrationTitle": "Join Our Celebration",
     "celebrationDescription": "Every moment we share is a celebration of love and joy. We can't wait to create beautiful memories together with you.",
