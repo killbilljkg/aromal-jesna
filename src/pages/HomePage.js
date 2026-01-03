@@ -68,9 +68,18 @@ END:VCALENDAR`;
       detail: weddingData.wedding.time
     },
     {
-      icon: '📍',
-      title: 'Venue',
-      detail: weddingData.wedding.venue.fullAddress
+      icon: '💒',
+      title: 'Ceremony',
+      detail: weddingData.wedding.venue.name,
+      location: weddingData.wedding.venue.location,
+      mapLink: weddingData.wedding.venue.mapLink
+    },
+    {
+      icon: '🎉',
+      title: 'Reception',
+      detail: weddingData.wedding.reception.name,
+      location: weddingData.wedding.reception.location,
+      mapLink: weddingData.wedding.reception.mapLink
     }
   ];
 
@@ -122,7 +131,7 @@ END:VCALENDAR`;
             {quickInfo.map((info, index) => (
               <motion.div
                 key={index}
-                className={`quick-info-card ${info.hasCalendar ? 'has-calendar' : ''}`}
+                className={`quick-info-card ${info.hasCalendar ? 'has-calendar' : ''} ${info.mapLink ? 'has-map' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -131,6 +140,19 @@ END:VCALENDAR`;
                 <div className="info-icon">{info.icon}</div>
                 <h3 className="info-title">{info.title}</h3>
                 <p className="info-detail">{info.detail}</p>
+                {info.location && (
+                  <p className="info-location">{info.location}</p>
+                )}
+                {info.mapLink && (
+                  <a
+                    href={info.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="get-directions-btn"
+                  >
+                    Get Directions
+                  </a>
+                )}
                 {info.hasCalendar && (
                   <div className="date-card-calendar">
                     <button

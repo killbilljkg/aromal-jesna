@@ -49,6 +49,35 @@
   line-height: 1.6;
 }
 
+.info-location {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-light, #888);
+  margin-top: 0.25rem;
+}
+
+.get-directions-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.25rem;
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid var(--text-dark);
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.get-directions-btn:hover {
+  background: var(--text-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* Date Card Calendar */
 .quick-info-card.has-calendar {
   position: relative;

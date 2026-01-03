@@ -23,6 +23,12 @@
       "fullAddress": "St. George Church, Chempanthotty, Kerala",
       "mapLink": "https://maps.app.goo.gl/5ZgMu4uXJyXNgi3a6"
     },
+    "reception": {
+      "name": "St Joseph Auditorium",
+      "location": "Pallithattu",
+      "fullAddress": "St Joseph Auditorium, Pallithattu, Kerala",
+      "mapLink": "https://maps.app.goo.gl/1jJUKBnMFWzSihDc9"
+    },
     "dressCode": "Preferably Semi-Formal with pastel shades"
   },
   "events": {
@@ -53,11 +59,6 @@
       "time": "6:30 PM",
       "title": "Madhuramveppu",
       "icon": "🥧"
-    },
-    {
-      "time": "7:00 PM",
-      "title": "Reception and Dinner",
-      "icon": "🍲"
     },
     {
       "time": "9:00 PM",

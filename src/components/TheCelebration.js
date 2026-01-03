@@ -5,10 +5,11 @@ import './TheCelebration.css';
 const TheCelebration = ({ events }) => {
   const [showCalendarMenu, setShowCalendarMenu] = useState(false);
 
-  // Get the first event to display
-  const firstEvent = events.engagement || events.wedding;
+  // Get wedding and reception events
+  const weddingEvent = events.wedding;
+  const receptionEvent = events.reception;
 
-  if (!firstEvent) return null;
+  if (!weddingEvent) return null;
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -21,16 +22,16 @@ const TheCelebration = ({ events }) => {
   };
 
   const generateCalendarLinks = () => {
-    const eventDate = new Date(firstEvent.date + 'T15:00:00');
-    const endDate = new Date(firstEvent.date + 'T22:30:00');
+    const eventDate = new Date(weddingEvent.date + 'T15:00:00');
+    const endDate = new Date(weddingEvent.date + 'T22:30:00');
 
     const formatDateForGoogle = (date) => {
       return date.toISOString().replace(/-|:|\.\d{3}/g, '');
     };
 
     const title = encodeURIComponent('Aromal & Jesna Wedding');
-    const location = encodeURIComponent(firstEvent.venue.address || firstEvent.venue.name);
-    const details = encodeURIComponent('Wedding Ceremony at ' + firstEvent.venue.name);
+    const location = encodeURIComponent(weddingEvent.venue.address || weddingEvent.venue.name);
+    const details = encodeURIComponent('Wedding Ceremony at ' + weddingEvent.venue.name + (receptionEvent ? ' | Reception at ' + receptionEvent.venue.name : ''));
 
     // Google Calendar
     const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatDateForGoogle(eventDate)}/${formatDateForGoogle(endDate)}&location=${location}&details=${details}`;
@@ -45,8 +46,8 @@ BEGIN:VEVENT
 DTSTART:${formatDateForGoogle(eventDate)}
 DTEND:${formatDateForGoogle(endDate)}
 SUMMARY:Aromal & Jesna Wedding
-LOCATION:${firstEvent.venue.address || firstEvent.venue.name}
-DESCRIPTION:Wedding Ceremony at ${firstEvent.venue.name}
+LOCATION:${weddingEvent.venue.address || weddingEvent.venue.name}
+DESCRIPTION:Wedding Ceremony at ${weddingEvent.venue.name}${receptionEvent ? ' | Reception at ' + receptionEvent.venue.name : ''}
 END:VEVENT
 END:VCALENDAR`;
 
@@ -102,8 +103,8 @@ END:VCALENDAR`;
               <div className="detail-icon">📅</div>
               <div className="detail-content">
                 <h3 className="detail-label">When</h3>
-                <p className="detail-date">{formatDate(firstEvent.date)}</p>
-                <p className="detail-time">Ceremony starts at {firstEvent.time}</p>
+                <p className="detail-date">{formatDate(weddingEvent.date)}</p>
+                <p className="detail-time">Ceremony starts at {weddingEvent.time}</p>
               </div>
             </motion.div>
 
@@ -114,12 +115,12 @@ END:VCALENDAR`;
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="detail-icon">📍</div>
+              <div className="detail-icon">💒</div>
               <div className="detail-content">
-                <h3 className="detail-label">Where</h3>
-                <p className="detail-venue">{firstEvent.venue.name}</p>
+                <h3 className="detail-label">Ceremony</h3>
+                <p className="detail-venue">{weddingEvent.venue.name}</p>
                 <a
-                  href={firstEvent.venue.mapLink}
+                  href={weddingEvent.venue.mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="view-map-link"
@@ -128,13 +129,37 @@ END:VCALENDAR`;
                 </a>
               </div>
             </motion.div>
+
+            {receptionEvent && (
+              <motion.div
+                className="detail-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <div className="detail-icon">🎉</div>
+                <div className="detail-content">
+                  <h3 className="detail-label">Reception</h3>
+                  <p className="detail-venue">{receptionEvent.venue.name}</p>
+                  <a
+                    href={receptionEvent.venue.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="view-map-link"
+                  >
+                    View Map
+                  </a>
+                </div>
+              </motion.div>
+            )}
           </div>
 
           <motion.div
             className="add-to-calendar-wrapper"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
             viewport={{ once: true }}
           >
             <button
