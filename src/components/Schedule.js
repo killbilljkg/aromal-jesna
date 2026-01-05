@@ -95,7 +95,7 @@ END:VCALENDAR`;
             className="schedule-calendar-btn"
             onClick={() => setShowCalendarMenu(!showCalendarMenu)}
           >
-            <span className="calendar-icon">📅</span>
+            <span className="calendar-icon">🗓️</span>
             Add to Calendar
             <span className={`dropdown-arrow ${showCalendarMenu ? 'open' : ''}`}>▼</span>
           </button>

@@ -57,7 +57,7 @@ END:VCALENDAR`;
 
   const quickInfo = [
     {
-      icon: '📅',
+      icon: '🗓️',
       title: 'Date',
       detail: weddingData.wedding.dateFormatted,
       hasCalendar: true

@@ -100,7 +100,7 @@ END:VCALENDAR`;
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="detail-icon">📅</div>
+              <div className="detail-icon">🗓️</div>
               <div className="detail-content">
                 <h3 className="detail-label">When</h3>
                 <p className="detail-date">{formatDate(weddingEvent.date)}</p>
@@ -166,7 +166,7 @@ END:VCALENDAR`;
               className="add-to-calendar-btn"
               onClick={() => setShowCalendarMenu(!showCalendarMenu)}
             >
-              <span className="calendar-icon">📅</span>
+              <span className="calendar-icon">🗓️</span>
               Add to Calendar
               <span className={`dropdown-arrow ${showCalendarMenu ? 'open' : ''}`}>▼</span>
             </button>

@@ -25,7 +25,7 @@ const EventCards = ({ events, eventType = 'both' }) => {
 
       <div className="card-body">
         <div className="event-detail">
-          <span className="detail-icon">📅</span>
+          <span className="detail-icon">🗓️</span>
           <div className="detail-content">
             <p className="detail-label">Date</p>
             <p className="detail-value">
